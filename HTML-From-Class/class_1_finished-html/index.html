@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>A social media site</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+
+		<!-- This is a comment  -->
+		<nav id="main--header">
+			<a href="#main-content" class="screenreader-text">
+				Skip navigation
+			</a>
+			<a href="#" id="logo">
+				A Social Media Site
+			</a>
+			<ul>
+				<li>
+					<a href="#">Home</a>
+				</li>
+				<li>
+					<a href="#profiles/current-user">
+						My Profile
+					</a>
+				</li>
+				<li>
+					<a href="#inbox">
+						Inbox
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<main>
+			<a id="main-content"></a>
+
+			<header>
+				<h1>Newsfeed</h1>
+				<i class="world"></i>
+			</header>
+
+			<article>
+				<header>
+					<img src="http://placehold.it/35x35" alt="User One's profile picture" class="profile--thumbnail">
+					<h2>User One</h2>
+					<strong>Power User</strong>
+				</header>
+
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent lobortis nulla eu euismod placerat. Morbi vulputate nisi eget nulla convallis, eu molestie elit facilisis. Ut est erat, pretium sed nisi eu, consequat dignissim quam. Donec at metus iaculis, dictum mauris vel, aliquam ipsum. Suspendisse varius id ante at pharetra. Phasellus a ligula a tortor ornare molestie. Etiam vel orci sodales arcu euismod sagittis.
+				</p>
+
+				<footer class="post--actions">
+					<ul>
+						<li>
+							<button>Love It</button>
+						</li>
+						<li>
+							<button>Share Post</button>
+						</li>
+						<li>
+							<button>Block Post</button>
+						</li>
+					</ul>
+				</footer>
+			</article>
+
+
+		</main>
+
+		<aside id="chatbox">
+			<section id="active--friends">
+				<header>
+					<h3>Online Friends</h3>
+				</header>
+				<ul>
+					<li>
+						<a href="#/profiles/user-1">
+							<img src="http://placehold.it/25x25" alt="User One's profile picture">
+							User One
+							<span class="user--active"></span>
+							<span class="screenreader-text">online</span>
+						</a>
+					</li>
+				</ul>
+			</section>
+			<section id="inactive--friends">
+				<header>
+					<h3>Offline Friends</h3>
+				</header>
+				<ul>
+					<li>
+						<a href="#profiles/user-2">
+							<img src="http://placehold.it/25x25" alt="User Two's profile picture">
+							User Two
+							<span class="user--inactive"></span>
+							<span class="screenreader-text">offline</span>
+						</a>
+					</li>
+				</ul>
+			</section>
+		</aside>
+
+		<footer id="main--footer">
+			<nav>
+				<h4>Sitemap</h4>
+				<ul>
+					<li>
+						<a href="#">Home</a>
+					</li>
+					<li>
+						<a href="#profiles/current-user">My Profile</a>
+					</li>
+					<li>
+						<a href="#inbox">Inbox</a>
+					</li>
+				</ul>
+			</nav>
+			<section>
+				<h4>Contact</h4>
+				<address>
+					222 S. Church St.<br>
+					Charlotte, NC 28202
+				</address>
+				<a href="mailto:test@socialmediasite.com">
+					test@socialmediasite.com
+				</a>
+			</section>
+		</footer>
+	</body>
+</html>

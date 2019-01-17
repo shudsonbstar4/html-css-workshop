@@ -1,0 +1,208 @@
+<!DOCTYPE html> <!-- declaration to let the browser know what type of document/file to expect. Back in the old days there were 3 types of html files, but in HTML5 there's only 1. Nowadays it's mainly for historical reasons. If it's left out, it may cause the browser to render the document as a different form of HTML, opening security and rendering issues, and possibly disallowing use of HTML5 tags -->
+<html lang="en"> <!-- alerts browser that the entire page is in English; you can also declare other languages in tags -->
+  <head> <!-- head contains additional info about the document; i.e., metadata for SEO, the title of the document, stylesheets, etc -->
+    <title>A social media site</title>
+    <meta charset="UTF-8"> <!-- tells the browser which character set to use -->
+  </head>
+  <body> <!-- The visible (aka output) section of the page -->
+    
+    <!-- SEMANTICS -->
+    <!-- We'll talk about semantics, which is the practice of writing markup to give components meaning. This exposes the browser's native accessibility tree to assistive technology and ensures that technology and browsers parse the HTML document as intended. It also means that a dev who is looking through to document can tell more quickly at a glance what each component is meant to do. Divs can be used for styling, but your core components should try to follow semantic markup -->
+    
+    <!-- DOM TREE -->
+    <!-- DOM = Document Object Model. The DOM Tree describes the hierarchy of nodes (HTML tags) that live in the HTML document. It starts with the top level <html> tag, with <body> and <head> as children of <html> (and siblings of each other). Further "descendents" of body include: 
+    
+    <h1>, <p>, <ul> and so on.
+
+    The DOM tree helps us understand the document's structure and each component's relation to other components on the page, and is particularly useful to us when we begin to understand CSS (in terms of inheritance) as well as JS (in terms of selecting the correct node in the DOM)
+    -->
+    
+    <nav id="main--header"> <!-- nav is used to describe a navigation section-->
+    <a href="#main-content" class="screenreader-text">Skip Navigation</a> <!-- this is an example of accessibility. For all your nav menus, always provide the ability to skip the navigation -->
+    <a href="#" id="logo">Social Media Site</a> <!-- a hashtag should be used as a placeholder -->
+     <ul> <!-- this is an unordered list. It's used for a list of items where the order isn't important. It's always used for navigation, and often used for other UI components, such as a list of blog posts, articles in a feed, etc -->
+       <li> <!-- this is an individual list item -->
+        <a href="#">Home</a>
+       </li>
+       <li> <!-- this is an individual list item -->
+        <a href="#profiles/current-user">My Profile</a>
+       </li>
+       <li> <!-- this is an individual list item -->
+        <a href="#inbox">Inbox</a>
+       </li>
+      </ul>
+    </nav>
+    
+    <main> <!-- an HTML5 tag describing the main content of the page -->
+      <a id="main-content"></a><!-- an anchor link that is related to the skip navigation link -->
+      
+      <header> <!-- header isn't necessary used for the top navbar of the document. It's more or less used to describe the title/heading of a section. Similar goes for <footer> -->
+        <h1>News posts</h1>
+      </header>
+      
+      <article> <!-- article is used to describe an article or a stand alone piece of content -->
+        <header> <!-- the header tag is used as an introduction; it usually contains a heading level tag, a logo or icon, or authorship information relevant to the new section. It's not just for the top bar of the page, but for any component where it makes semantic sense -->
+          <img class="profile--thumbnail" src="http://placehold.it/35x35" alt="User 1's profile picture">
+          <h3>User Three</h3>
+          <strong>Power User</strong> <!-- strong is used for indicating to the browser that this piece of information is important -->
+        </header>
+        <p>Minim ubi expetendis. Cernantur exercitation qui offendit hic de dolore quo 
+          enim. Te velit o irure. Et aliqua proident tractavissent o ea elit occaecat 
+          fabulas ita id minim enim ita quamquam, offendit quis ab mandaremus fidelissimae 
+          te officia ea possumus, culpa quibusdam officia do sint cupidatat te labore aute 
+          a magna mandaremus nam nulla aute. Appellat summis officia, illum quibusdam 
+          fabulas ubi senserit adipisicing id cernantur do nam duis anim malis laboris. 
+          Cernantur cillum offendit, a id cillum dolore cillum.
+        </p>
+        <footer class="post--actions">
+          <ul>
+            <li>
+              <button>Love it</button>
+            </li>
+            <li>
+              <button>Share post</button>
+            </li>
+            <li>
+              <button>Block post</button>
+            </li>
+          </ul>
+        </footer>  
+      </article>
+      
+      <article> <!-- article is used to describe an article or a stand alone piece of content -->
+        <header>
+          <img class="profile--thumbnail" src="http://placehold.it/35x35" alt="User 3's profile picture">
+          <h3>User 3</h3>
+        </header>
+        <p>Minim ubi expetendis. Cernantur exercitation qui offendit hic de dolore quo 
+          enim. Te velit o irure. Et aliqua proident tractavissent o ea elit occaecat 
+          fabulas ita id minim enim ita quamquam, offendit quis ab mandaremus fidelissimae 
+          te officia ea possumus, culpa quibusdam officia do sint cupidatat te labore aute 
+          a magna mandaremus nam nulla aute. Appellat summis officia, illum quibusdam 
+          fabulas ubi senserit adipisicing id cernantur do nam duis anim malis laboris. 
+          Cernantur cillum offendit, a id cillum dolore cillum.
+        </p>
+        <footer class="post--actions">
+          <ul>
+            <li>
+              <button>Love it</button>
+            </li>
+            <li>
+              <button>Share post</button>
+            </li>
+            <li>
+              <button>Block post</button>
+            </li>
+          </ul>
+        </footer>  
+      </article>
+      
+    </main>
+    
+    <aside id="chatbox"> <!-- HTML5 tag that describes content that is set apart from the main content -->
+      <section id="active_friends">
+        <header>
+          <h2>
+            Online friends
+          </h2>
+        </header>
+        
+        <ul>
+          <li>
+            <a href="#profiles/user-1">
+              <img src="http://placehold.it/25x25" alt="User 1's profile image">  <!-- the alt text is to describe the image to users with screenreaders or whose browser didn't load the image properly. It's also useful for SEO  -->
+              User 1
+              <span class="user--active"></span> <!-- the span tag is for inline elements; it's more or less for indicating there is a styling change around that element and to keep it in line with the other inline elements -->
+              <!-- inline elms: <a>, <span> -->
+              <!-- block elms:  <p>, <article>, <h1>, etc - block elms take up a full row of width -->
+              <span class="screenreader-text">online</span> <!-- this is an example of accessibility. In this case, the user active span tag will hold a visual indication that the user is online; however, blind users can't see this so we have to use text to convey the same information to the screenreader. When we add CSS, we will hide this visually from the sighted users so it won't detract from visual UX -->
+            </a>
+          </li>
+          <li>
+            <a href="#profiles/user-2">
+              <img src="http://placehold.it/25x25" alt="User 2's profile image">
+              User 2
+              <span class="user--active"></span>
+              <span class="screenreader-text">online</span>
+            </a>
+          </li>
+          <li>
+            <a href="#profiles/user-3">
+              <img src="http://placehold.it/25x25" alt="User 3's profile image">
+              User 3
+              <span class="user--active"></span>
+              <span class="screenreader-text">online</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+      
+      <section id="inactive_friends">
+        <header>
+          <h2>
+            Offline friends
+          </h2>
+        </header>
+        
+        <ul>
+          <li>
+            <a href="#profiles/user-4">
+              <img src="http://placehold.it/25x25" alt="User 4's profile image"> 
+              User 4
+              <span class="user--active"></span>
+              <span class="screenreader-text">offline</span>
+            </a>
+          </li>
+          <li>
+            <a href="#profiles/user-5">
+              <img src="http://placehold.it/25x25" alt="User 2's profile image">
+              User 5
+              <span class="user--active"></span>
+              <span class="screenreader-text">offline</span>
+            </a>
+          </li>
+          <li>
+            <a href="#profiles/user-6">
+              <img src="http://placehold.it/25x25" alt="User 3's profile image">
+              User 6
+              <span class="user--active"></span>
+              <span class="screenreader-text">offline</span>
+            </a>
+          </li>
+        </ul>
+        
+      </section>
+    </aside>
+    
+    <footer id="main--footer">
+      <nav id="sitemap">
+        <h4>Sitemap</h4> <!-- you may notice we're not using header tags here; this is because we can't use header as a descendent of footer. It's confusing semantically -->
+        <ul> <!-- this is an unordered list. It's used for a list of items where the order isn't important. It's always used for navigation, and often used for other UI components, such as a list of blog posts, articles in a feed, etc -->
+         <li> <!-- this is an individual list item -->
+          <a href="#">Home</a>
+         </li>
+         <li> <!-- this is an individual list item -->
+          <a href="#profiles/current-user">My Profile</a>
+         </li>
+         <li> <!-- this is an individual list item -->
+          <a href="#inbox">Inbox</a>
+         </li>
+        </ul>
+      </nav>
+      
+      <section id="contact">
+        <h4>Contact</h4>
+        <address> <!-- an example of semantics - tells browser this is an address -->
+          222 S. Church St.<br>
+          Charlotte, NC 28202
+        </address>
+        <!-- mailto will open your email client with the "to" address pre-filled -->
+        <a href="mailto:test@socialmediatest.com">test@socialmediatest.com</a>
+      </section>
+    </footer>
+    
+    <!-- Validate your HTML: https://validator.w3.org/
+    Validation =/= conformance. Validation just ensures that you follow the correct syntax (rules of grammar) for HTML
+    -->
+  </body>
+</html>

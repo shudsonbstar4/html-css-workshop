@@ -1,0 +1,329 @@
+/* 
+  Notes to self:
+
+  We will start like this:
+  * Reset
+  * Base
+  * Layout
+  * Header
+  * Main / Aside
+  * Footer
+  * Post
+
+  And also add icons with font awesome
+
+So general to specific
+*/
+
+
+
+/** 
+* RESET -- this resets our CSS and removes the default browser styling from the browser's built in style guides. That way, we have a clean slate cross browser.
+
+You can also use a ready-made reset library or a normalize library
+
+Difference is: normalize.css preserves user defaults whereas reset unstyles everything
+
+Normalize is generally preferred, but since this is a small project, we are using a custom reset
+*/
+
+/**
+* Note: In a real project, the CSS files would be chunked out as "modules". I'll make a note in our CSS for each separate Module
+*/
+
+/* Best practice tip: there are a few conventions for how to list your properties, including following the box model and then colors, fonts, etc, but the easiest rule of thumb to remember is to list your properties in alphabetical order. This makes it easier to find at a glance */
+
+/**
+* RESET.CSS
+*/
+
+html,
+body {
+  font-size: 14px; /* This sets the baseline height for your text. You can then size your elements using ems and rems, and it will refer to 14px as the starting point (i.e., 1em = 14px, 1.5em = 21px) */
+  height: 100%;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+article,
+aside,
+div,
+header,
+footer,
+main,
+ul {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+ul {
+  list-style-type: none;
+}
+
+/**
+* BASE.CSS -- This file would contain your baseline styles, including theme colors, fontstacks, etc
+**/
+
+html, 
+body {
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #16012B;
+  font-weight: 700; /* Prevents faux-bolding for when we move to a Google font */
+}
+
+.padding-top { 
+  padding-top: 1em;
+}
+
+.screenreader-text { /* We don't want to say display: none or turn off visibility b/c this will remove the text from the Accessibility Tree. So we use this technique to hide it from sighted users */
+  height: 1px;
+  left: -10000px;
+  overflow: hidden;
+  position: absolute;
+  top: auto;
+  width: 1px;
+}
+
+/**
+* LAYOUT.CSS -- This file would contain all the 
+*/
+
+html, body { /* We have to use both b/c some browsers use one and some the other */
+  height: 100%;
+}
+
+.clearfix { /* We have to set a clearfix because otherwise the float will "collapse" the element */
+  clear: both;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto; /* This centers it but we have to use it with width */
+}
+
+.page-wrap {
+  margin-bottom: -150px;
+  min-height: 100%;
+}
+
+.page-wrap:after {
+  content: ""; /* Pseudo element */
+  display: block;
+}
+
+#posts {
+  float: left;
+  margin-bottom: 1em;
+  width: 80%;
+}
+
+#chatbox {
+  float: right;
+  padding: 1em;
+  width: 20%;
+}
+
+main {
+  min-height: 100%;
+}
+
+#main--footer, .page-wrap:after {
+  height: 150px;
+}
+
+
+/* Tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  #posts {
+    width: 70%;
+  }
+
+  #chatbox {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-device-width: 767px) {
+  #posts {
+    width: 100%;
+  }
+  
+  #chatbox {
+    width: 100%;
+  }
+}
+
+/* mobile: https://css-tricks.com/snippets/css/media-queries-for-standard-devices/; */
+
+
+/**
+* HEADER.CSS -- This file would contain all the styles pertaining to the header.
+**/
+
+/* A word on specificity -- a lot of web devs don't like using IDs for styling because of what's called specificity. IDs tend to have a higher level of specificity (100 to be exact) which declares how important the set of rules will be in determining which gets rendered and which gets overwritten. It looks like this:
+
+Inline  = 1000
+IDs     = 100
+Classes = 10
+Tags    = 1
+
+So this means if I have this:
+
+.red--paragraph { color: red }
+p { color: blue }
+
+Then the text will be rendered as red, even though blue comes last. However, if you throw this in the mix:
+
+#body_text { color: green }
+p { color: blue }
+p.red--paragraph { color: red }
+
+It will display as green, no if you chain classes or tag selectors. 
+
+On that note, since inline styling is so high, that's why you won't be able to override in your stylesheets and that's why it's not a good idea.
+
+Sidebar: If you see this: "!important", don't follow that convention. This is breaking the browser's default specificity in determining what to render, and can affect accessibility and override stylesheets. Plus it'll make your devs later on go crazy trying to track down why a simple color change isn't working correctly.
+
+*/
+#main--header {
+  background-color: #16012B;
+  color: #fff;
+  min-height: 3em;
+}
+
+#main--header a {
+  color: #fafafa;
+  display: inline-block;
+  padding: 1em 2em;
+  text-decoration: none;
+}
+
+#main--header ul { /* This is a selector. We're saying select all the UL tags in the #main-header ID and apply this set of styles */
+  float: right;  
+}
+
+#main--header ul li {
+  display: inline-block; /* This will allow the items to behave like buttons side by side */
+  list-style-type: none;
+  transition: 0.3s all;
+}
+
+#main--header li:hover {
+  background-color: #743AB0;
+  transition: 0.3s all;
+}
+
+/**
+* FOOTER.CSS
+*/
+
+#main--footer {
+  background-color: #e0e0e0;
+  border-top: 1px solid #c1c1c1;
+  padding: 1em 0;
+}
+
+#main--footer #sitemap {
+  float: left;
+}
+
+#main--footer #contact {
+  float: right;
+}
+
+/**
+* POST.CSS -- This file would contain all the styles pertaining to the Post component. You want to chunk out your files as per component to package them neatly and allow them to be reusable.
+**/
+
+/* Box model: It looks like:
+  - Margin
+    - Border
+      - Padding
+        - Content/Tag
+
+box-sizing: border-box takes care of width/height anomlies caused by setting padding and border on an elem
+*/
+#posts article {
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px;
+  padding: 1em; /* Padding is placed inside the border, outside the content */
+  margin: 1em; /* Margin is placed outside of the border, outside the content */
+}
+
+#posts article header {
+  margin-bottom: 1em;
+}
+
+#posts article header img {
+  float: left;
+  margin-right: 1em;
+}
+
+#posts footer {
+  margin: 0.5em 0;
+}
+
+.post--actions ul li {
+  display: inline-block;
+}
+
+.post--actions button {
+  background-color: #fafafa;
+  border: 1px solid #d1d1d1;
+  border-radius: 2px;
+  box-shadow: none;
+  padding: 0.3em 1em;
+}
+
+/**
+* CHAT.CSS -- This file is for the friends chatbox
+*/
+
+#chatbox {
+/*  border: 1px solid #e0e0e0;*/
+}
+
+#chatbox header {
+  background-color: #e0e0e0;
+  margin: 0.75em 0;
+  padding: 0.5em;
+}
+
+#chatbox header h2 {
+  font-size: 1.2em;
+}
+
+.user--active, .user--inactive {
+  border-radius: 5px;
+  display: inline-block;
+  height: 5px;
+  padding: 5px;
+  width: 5px;
+}
+
+.user--active {
+  background-color: #8AAA1C;
+}
+
+.user--inactive {
+  background-color: #91187A;
+}

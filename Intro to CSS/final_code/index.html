@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>A social media site</title>
+    <meta charset="UTF-8">
+    <!-- You can use a CDN (Content Delivery Network) for common libraries so you don't have to host those yourself -->
+    <!-- find the icons stylesheet here: https://www.bootstrapcdn.com/fontawesome/ -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- this is how you insert stylesheets; the link tag here will download it automatically in the background to your browser. You can only use <link> tags in the head section -->
+  </head>
+  <body>
+    <nav id="main--header">
+      <div class="container"> <!-- We've added this container <div> so that we can add margin and center our content on the page, giving it space to breathe. I've added 3 container dives instead of wrapping everything in one so that our header and footer has a background color that spans the full width of the page. -->
+        <a href="#main-content" class="screenreader-text">Skip Navigation</a>
+        <a href="#" id="logo">Social Media Site</a>
+
+        <!-- You'll notice that below, we've added icon <i> tags to our HTML. These contain classes provided by our FontAwesome stylesheet, linked above our styles.css -->
+        <ul>
+          <li>
+            <a href="#">
+              <i class="fa fa-home"></i> Home
+            </a>
+          </li>
+          <li>
+            <a href="#profiles/current-user">
+              <i class="fa fa-user"></i> My Profile
+            </a>
+          </li>
+          <li>
+            <a href="#inbox">
+              <i class="fa fa-inbox"></i> Inbox
+            </a>
+          </li>
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+    </nav>
+    
+    <div class="container page-wrap padding-top"> <!-- This is an example of "chaining classes".  This means that we allow users to add on multiple rulesets and mix and match rulesets. It goes back to reusing styling-->
+      <main id="posts">
+        <a id="main-content"></a>
+        <header>
+          <h1>News posts</h1>
+        </header>
+
+        <article>
+          <header>
+            <img class="profile--thumbnail" src="http://placehold.it/35x35" alt="User One's profile picture">
+            <h2>User One</h2>
+            <strong>Power User</strong>
+            <div class="clearfix"></div> <!-- Clearfix should be inserted whenever we have finished using floats for a section. Although we have floats later down the page, we have finished with a "chain" of floats here, and if we weren't to clear it, then it would collapse the rest of the page -->
+          </header>
+          <p>Minim ubi expetendis. Cernantur exercitation qui offendit hic de dolore quo 
+            enim. Te velit o irure. Et aliqua proident tractavissent o ea elit occaecat 
+            fabulas ita id minim enim ita quamquam, offendit quis ab mandaremus fidelissimae 
+            te officia ea possumus, culpa quibusdam officia do sint cupidatat te labore aute 
+            a magna mandaremus nam nulla aute. Appellat summis officia, illum quibusdam 
+            fabulas ubi senserit adipisicing id cernantur do nam duis anim malis laboris. 
+            Cernantur cillum offendit, a id cillum dolore cillum.
+          </p>
+          <footer class="post--actions">
+            <ul>
+              <li>
+                <button>
+                  <i class="fa fa-heart-o"></i> Love it
+                </button>
+              </li>
+              <li>
+                <button>
+                  <i class="fa fa-share"></i> Share post
+                </button>
+              </li>
+              <li>
+                <button>
+                  <i class="fa fa-ban"></i> Block post
+                </button>
+              </li>
+            </ul>
+          </footer>  
+        </article>
+
+        <article>
+          <header>
+            <img class="profile--thumbnail" src="http://placehold.it/35x35" alt="User Two's profile picture">
+            <h2>User Two</h2>
+            <div class="clearfix"></div>
+          </header>
+          <p>Minim ubi expetendis. Cernantur exercitation qui offendit hic de dolore quo 
+            enim. Te velit o irure. Et aliqua proident tractavissent o ea elit occaecat 
+            fabulas ita id minim enim ita quamquam, offendit quis ab mandaremus fidelissimae 
+            te officia ea possumus, culpa quibusdam officia do sint cupidatat te labore aute 
+            a magna mandaremus nam nulla aute. Appellat summis officia, illum quibusdam 
+            fabulas ubi senserit adipisicing id cernantur do nam duis anim malis laboris. 
+            Cernantur cillum offendit, a id cillum dolore cillum.
+          </p>
+          <footer class="post--actions">
+            <ul>
+              <li>
+                <button>
+                  <i class="fa fa-heart-o"></i> Love it
+                </button>
+              </li>
+              <li>
+                <button>
+                  <i class="fa fa-share"></i> Share post
+                </button>
+              </li>
+              <li>
+                <button>
+                  <i class="fa fa-ban"></i> Block post
+                </button>
+              </li>
+            </ul>
+          </footer>  
+        </article>
+
+
+        <article>
+          <header>
+            <img class="profile--thumbnail" src="http://placehold.it/35x35" alt="User Three's profile picture">
+            <h2>User Three</h2>
+            <div class="clearfix"></div>
+          </header>
+          <p>Minim ubi expetendis. Cernantur exercitation qui offendit hic de dolore quo 
+            enim. Te velit o irure. Et aliqua proident tractavissent o ea elit occaecat 
+            fabulas ita id minim enim ita quamquam, offendit quis ab mandaremus fidelissimae 
+            te officia ea possumus, culpa quibusdam officia do sint cupidatat te labore aute 
+            a magna mandaremus nam nulla aute. Appellat summis officia, illum quibusdam 
+            fabulas ubi senserit adipisicing id cernantur do nam duis anim malis laboris. 
+            Cernantur cillum offendit, a id cillum dolore cillum.
+          </p>
+          <footer class="post--actions">
+            <ul>
+              <li>
+                <button>
+                  <i class="fa fa-heart-o"></i> Love it
+                </button>
+              </li>
+              <li>
+                <button>
+                  <i class="fa fa-share"></i> Share post
+                </button>
+              </li>
+              <li>
+                <button>
+                  <i class="fa fa-ban"></i> Block post
+                </button>
+              </li>
+            </ul>
+          </footer>  
+        </article>
+      </main>
+      
+      <aside id="chatbox">
+        <section id="active_friends">
+          <header>
+            <h3>
+              Online friends
+            </h3>
+          </header>
+
+          <ul>
+            <li>
+              <a href="#profiles/user-1">
+                <img src="http://placehold.it/25x25" alt="User One's profile picture">
+                User One
+                <div class="user--active"></div>
+                <span class="screenreader-text">online</span>
+              </a>
+            </li>
+            <li>
+              <a href="#profiles/user-2">
+                <img src="http://placehold.it/25x25" alt="User Two's profile picture">
+                User Two
+                <div class="user--active"></div>
+                <span class="screenreader-text">online</span>
+              </a>
+            </li>
+            <li>
+              <a href="#profiles/user-3">
+                <img src="http://placehold.it/25x25" alt="User Three's profile picture">
+                User Three
+                <div class="user--active"></div>
+                <span class="screenreader-text">online</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section id="inactive_friends">
+          <header>
+            <h3>
+              Offline friends
+            </h3>
+          </header>
+
+          <ul>
+            <li>
+              <a href="#profiles/user-4">
+                <img src="http://placehold.it/25x25" alt="User Four's profile picture"> 
+                User Four
+                <div class="user--inactive"></div>
+                <span class="screenreader-text">offline</span>
+              </a>
+            </li>
+            <li>
+              <a href="#profiles/user-5">
+                <img src="http://placehold.it/25x25" alt="User Five's profile picture">
+                User Five
+                <div class="user--inactive"></div>
+                <span class="screenreader-text">offline</span>
+              </a>
+            </li>
+            <li>
+              <a href="#profiles/user-6">
+                <img src="http://placehold.it/25x25" alt="User Six's profile picture">
+                User Six
+                <div class="user--inactive"></div>
+                <span class="screenreader-text">offline</span>
+              </a>
+            </li>
+          </ul>
+
+        </section>
+      </aside>
+      <div class="clearfix"></div>
+    </div>
+    
+    <footer id="main--footer">
+      <div class="container">
+        <nav id="sitemap">
+          <h4>Sitemap</h4>
+          <ul>
+           <li>
+            <a href="#">Home</a>
+           </li>
+           <li>
+            <a href="#profiles/current-user">My Profile</a>
+           </li>
+           <li>
+            <a href="#inbox">Inbox</a>
+           </li>
+          </ul>
+        </nav>
+
+        <section id="contact">
+          <h4>Contact</h4>
+          <address>
+            222 S. Church St.<br>
+            Charlotte, NC 28202
+          </address>
+          <a href="mailto:test@socialmediatest.com">test@socialmediatest.com</a>
+        </section>
+        <div class="clearfix"></div>
+      </div>
+    </footer>
+  </body>
+</html>

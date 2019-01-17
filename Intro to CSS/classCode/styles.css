@@ -1,0 +1,119 @@
+/* RESET.CSS */
+
+html, body {
+	font-size: 14px;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: none;
+}
+
+/* BASE.CSS */
+
+html, body {
+	font-family: Tahoma, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #16012B;
+	font-weight: 700;
+}
+
+.screenreader-text {
+	height: 1px;
+	left: -10000000px;
+	overflow: hidden;
+	position: absolute;
+	top: auto;
+	width: 1px;
+}
+
+
+/* LAYOUT.CSS */
+
+.clearfix {
+	clear: both;
+}
+
+.container {
+	margin: 0 auto 0 auto; /* top right bottom left */
+	width: 90%;
+}
+
+#posts {
+	float: left;
+	width: 80%;
+}
+
+#chatbox {
+	float: right;
+	width: 20%;
+}
+
+
+/* HEADER.CSS */
+#main--header {
+	background-color: #16012B;
+	color: #fff;
+	min-height: 3em;
+}
+
+#main--header a {
+	color: #fff;
+	padding: 1em 2em;
+}
+
+#main--header ul {
+	float: right;
+}
+
+#main--header ul li {
+	display: inline-block;
+	transition: 0.7s all;
+}
+
+#main--header li:hover {
+	background-color: #743AB0;
+	transition: 0.7s all;
+}
+
+/* POSTS.CSS */
+
+#posts article {
+	background-color: #f0f0f0;
+	border: 1px solid #e0e0e0;
+	border-radius: 2px;
+	padding: 1em;
+	margin: 1em;
+}
+
+#posts article header {
+	margin-bottom: 1em;
+}
+
+#posts article header img {
+	float: left;
+	margin-right: 1em;
+}
+
+#posts footer {
+	margin: 0.5em 0;
+}
+
+.post--actions ul li {
+	display: inline-block;
+}
+
+.post--actions button {
+	background-color: #fafafa;
+	border: 1px solid #d1d1d1;
+	box-shadow: none;
+	padding: 0.3em 1em;
+}
+

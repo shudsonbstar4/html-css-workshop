@@ -1,0 +1,301 @@
+/** 
+* RESET -- this resets our CSS and removes the default browser styling from the browser's built in style guides. That way, we have a clean slate cross browser.
+
+You can also use a ready-made reset library or a normalize library
+
+Difference is: normalize.css preserves user defaults & gives us some styling to work with whereas reset unstyles everything
+
+Normalize is generally preferred, but since this is a small project, we are using a custom reset
+*/
+
+/**
+* Note: In a real project, the CSS files would be chunked out as "modules". I'll make a note in our CSS for each separate Module as it would appear in the real world
+*/
+
+/* Best practice tip: there are a few conventions for how to list your properties, including following the box model and then colors, fonts, etc, but the easiest rule of thumb to remember is to list your properties in alphabetical order. This makes it easier to find at a glance */
+
+/**
+* RESET.CSS
+*/
+
+/* We use both html and body for styling here since some browsers use html and some use body for global styling */
+html,
+body {
+  font-size: 14px; /* This sets the baseline height for your text. You can then size your elements using ems, and it will refer to 14px as the starting point (i.e., 1em = 14px, 1.5em = 21px, 2em = 28px) */
+  height: 100%; /* Setting the height to 100% for the html and body will allow us to stick the footer to the bottom of the page instead of leaving a nasty gap */
+}
+
+* { /* The asterisk is a wildcard selector, saying grab all the elements on the page and apply this styling. */
+  box-sizing: border-box;  /* Box sizing means that our widths and heights will take into account the padding and border of an element. Example:
+  
+  If you have a grid of 3 columns, each column <div> set to 33%, and you have box-sizing as the default, it will mean that when you add 10px of padding and 2px of border, that will be added to 33% for the content. So it would look like:
+
+  33% of the container width + 10px left + 10px right + 2px left + 2px right
+
+  That means our columns will be wider than 33%. Box-sizing: border-box ensures that we include the border thickness and the padding in the browser's calculation of the 33%
+
+  ; */
+  margin: 0;
+  padding: 0;
+}
+
+
+ul {
+  list-style-type: none; /* This removes the bullet points on our lists */
+}
+
+/**
+* BASE.CSS -- This file would contain your baseline styles, including theme colors, font stacks, etc
+**/
+
+html, 
+body {
+  font-family: Tahoma, Arial, sans-serif; /* This is what's known as a font stack. A font stack will include 3 or 4 fonts of the same family (i.e, serif or sans-serif) in the order they should be rendered (in case one isn't available). Web-safe fonts refer to fonts on everyone's computer that are safe to use without downloading an additional stylesheet (a la Google fonts) */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #16012B;
+  font-weight: 700; /* Prevents faux-bolding for when we move to a Google font */
+}
+
+.padding-top {  /* This is what's known as a "surgical style". It's a generic spacing or border style that can be applied to many different tags; this allows you to keep the spacing in one spot, and not edit a bunch of custom classes for many elements */
+  padding-top: 1em;
+}
+
+.screenreader-text { /* We don't want to say display: none or turn off visibility b/c this will remove the text from the Accessibility Tree. So we use this technique to hide it from sighted users */
+  height: 1px; /* We collapse our width and height, and use overflow:; hidden in case the content breaks out of the sizing */
+  left: -10000px; /* Shove it off the visible screen */
+  overflow: hidden;
+  position: absolute; /* Position: absolute; pulls it out of the DOM flow and sets the top and left relative to the screen, not the containing element (i.e, our container div) */
+  top: auto;
+  width: 1px;
+}
+
+/**
+* LAYOUT.CSS -- This file would contain all the 
+*/
+
+html, body { /* We have to use both b/c some browsers use one and some the other */
+  height: 100%;
+}
+
+.clearfix { /* We have to set a clearfix because otherwise the float will "collapse" the element */
+  clear: both;
+}
+
+.container {
+  margin: 0 auto; /* This centers it but we have to use it with width */
+  width: 90%; /* This will be 90% of the containing element (in this case, it will be the screen) */
+}
+
+.page-wrap {
+  margin-bottom: -150px; /* This is just a trick we use to set a negative margin before our footer, so we ensure our footer sticks to the bottom of the page. The footer will have to have a height that matches the negative margin-bottom. */
+  min-height: 100%;
+}
+
+.page-wrap:after { /* This is also for making our sticky footer work. */
+  content: ""; /* Pseudo element -- this adds a pseudo element to our DOM which isn't really there, but allows us to insert things like spaces, text, and symbols via CSS  */
+  display: block; /* Make our pseudo element a block selector so it stretches the full page. */
+}
+
+#posts {
+  float: left; /* Floating an item to the left means we force it to the left side of the page and allow sibling elements to display beside it. It was originally used for pictures and floating text around a picture but it's now used for layouts too */
+  margin-bottom: 1em;
+  width: 80%; /* This is going to be 80% of the containing element; in this case, that's the .container div */
+}
+
+#chatbox {
+  float: right; /* Float it to the right of the screen */
+  padding: 1em;
+  width: 20%;
+}
+
+main {
+  min-height: 100%;
+}
+
+#main--footer, .page-wrap:after { /* Force our sticky footer to work by setting a height to equal the negative margin-bottom */
+  height: 150px;
+}
+
+
+/* MEDIA QUERIES -- these are used to specify how a layout should work on mobile devices. */
+/* Tablets */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) { /* We're saying here, we only want it to apply to screens (not print previews) and it should only apply the following rules when the screen size is between the two device widths */
+  #posts {
+    width: 70%;
+  }
+
+  #chatbox {
+    width: 30%; /* We wanted to make the chat a bit bigger for tablets b/c it was getting too small */
+  }
+}
+
+@media only screen and (max-device-width: 767px) { /* This is inferring that our minimum width is 0px -- it's saying anything 767px and below should follow these rules. */
+  #posts {
+    width: 100%; /* For mobile phones, it should fill the full width and the user should scroll down for the chat, b/c that's not as important as our dashboard */
+  }
+  
+  #chatbox {
+    width: 100%;
+  }
+}
+
+/* See this link for standard "breakpoints", i.e., screen sizes where you may need to make layout adjustments: https://css-tricks.com/snippets/css/media-queries-for-standard-devices/; */
+
+
+/**
+* HEADER.CSS -- This file would contain all the styles pertaining to the header.
+**/
+
+/* A word on specificity -- a lot of web devs don't like using IDs for styling because of what's called specificity. IDs tend to have a higher level of specificity (100 to be exact) which declares how important the set of rules will be in determining which gets rendered and which gets overwritten. It looks like this:
+
+Inline  = 1000
+IDs     = 100
+Classes = 10
+Tags    = 1
+
+So this means if I have this:
+
+.red--paragraph { color: red }
+p { color: blue }
+
+Then the text will be rendered as red, even though blue comes last. However, if you throw this in the mix:
+
+#body_text { color: green }
+p { color: blue }
+p.red--paragraph { color: red }
+
+It will display as green, no matter if you chain classes or tag selectors. 
+
+On that note, since inline styling is so high, that's why you won't be able to override in your stylesheets and that's why it's not a good idea.
+
+Sidebar: If you see this: "!important", don't follow that convention. This is breaking the browser's default specificity in determining what to render, and can affect accessibility and override stylesheets. Plus it'll make your devs later on go crazy trying to track down why a simple color change isn't working correctly.
+
+*/
+#main--header {
+  background-color: #16012B;
+  color: #fff;
+  min-height: 3em; /* Min height so if the content is larger than that, it'll stretch it down instead of overflowing the container */
+}
+
+#main--header a {
+  color: #fafafa;
+  display: inline-block; /* inline-block allows the items to be displayed beside each other while also allowing it to behave as a block element, in that it fills the full space you give it instead of following the sizing of the content. We're adding it here too so that we can make our links look like buttons */
+  padding: 1em 2em;
+  text-decoration: none; /* Remove the default underline on links */
+}
+
+#main--header ul { /* This is a selector. We're saying select all the UL tags in the #main-header ID and apply this set of styles */
+  float: right;  
+}
+
+#main--header ul li {
+  display: inline-block; /* This will allow the items to behave like buttons side by side */
+  list-style-type: none;
+  transition: 0.3s all; /* Adding a transition onto the default state of the navigation items so that we can make it fade in and out smoothly. The first value is the delay before applying it and the second is the property it targets -- in this case all of them */
+}
+
+#main--header li:hover {
+  background-color: #743AB0;
+  transition: 0.3s all;
+}
+
+/**
+* FOOTER.CSS
+*/
+
+#main--footer {
+  background-color: #e0e0e0;
+  border-top: 1px solid #c1c1c1;
+  padding: 1em 0;
+}
+
+#main--footer #sitemap {
+  float: left;
+}
+
+#main--footer #contact {
+  float: right;
+}
+
+/**
+* POST.CSS -- This file would contain all the styles pertaining to the Post component. You want to chunk out your files as per component to package them neatly and allow them to be reusable.
+**/
+
+/* Box model: It looks like:
+  - Margin
+    - Border
+      - Padding
+        - Content/Tag
+
+So margin is on the outside of the tag, and padding is inside
+box-sizing: border-box takes care of width/height anomlies caused by setting padding and border on an elem
+*/
+#posts article {
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  border-radius: 2px; /* Rounded corners */
+  padding: 1em; /* Padding is placed inside the border, outside the content */
+  margin: 1em; /* Margin is placed outside of the border, outside the content */
+}
+
+#posts article header {
+  margin-bottom: 1em;
+}
+
+#posts article header img {
+  float: left;
+  margin-right: 1em;
+}
+
+#posts footer {
+  margin: 0.5em 0;
+}
+
+.post--actions ul li {
+  display: inline-block;
+}
+
+.post--actions button {
+  background-color: #fafafa;
+  border: 1px solid #d1d1d1;
+  border-radius: 2px;
+  box-shadow: none;
+  padding: 0.3em 1em;
+}
+
+/**
+* CHAT.CSS -- This file is for the friends chatbox
+*/
+
+#chatbox header {
+  background-color: #e0e0e0;
+  margin: 0.75em 0;
+  padding: 0.5em;
+}
+
+#chatbox header h2 {
+  font-size: 1.2em;
+}
+
+.user--active, .user--inactive {
+  border-radius: 5px;
+  display: inline-block;
+  height: 5px;
+  padding: 5px;
+  width: 5px;
+}
+
+.user--active {
+  background-color: #8AAA1C;
+}
+
+.user--inactive {
+  background-color: #91187A;
+}
